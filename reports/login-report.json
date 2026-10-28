@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-10-28T06:24:30.274Z",
+    "end": "2026-10-28T06:24:44.888Z",
+    "duration": 14614,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c75f9f99-241d-49e9-8c23-5b54c961e545",
+      "title": "",
+      "fullFile": "C:\\Users\\nurro\\OneDrive\\Documents\\belajarQA\\Sesi11\\test\\login.test.js",
+      "file": "\\test\\login.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+          "title": "SauceDemo - Login",
+          "fullFile": "C:\\Users\\nurro\\OneDrive\\Documents\\belajarQA\\Sesi11\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"SauceDemo - Login\"",
+              "fullTitle": "SauceDemo - Login \"before each\" hook in \"SauceDemo - Login\"",
+              "timedOut": false,
+              "duration": 1872,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder()\n    .forBrowser(\"chrome\")\n    .build();\nawait driver.manage().window().setRect({\n    x: 0,\n    y: 0,\n    width: 1280,\n    height: 800\n});\nloginPage = new LoginPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "59baa816-79e5-4cc2-a7e8-980b21fb54a2",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"SauceDemo - Login\"",
+              "fullTitle": "SauceDemo - Login \"after each\" hook in \"SauceDemo - Login\"",
+              "timedOut": false,
+              "duration": 82,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n    await driver.quit();\n    driver = null;\n}",
+              "err": {},
+              "uuid": "530d571c-9a5c-40fd-9a8d-b9f71f395307",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Positive - Login berhasil",
+              "fullTitle": "SauceDemo - Login Positive - Login berhasil",
+              "timedOut": false,
+              "duration": 2503,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login(\n    \"standard_user\",\n    \"secret_sauce\"\n);\nawait driver.wait(\n    until.urlContains(\"inventory.html\"),\n    10000\n);\nawait loginPage.waitForInventory();\nconst currentUrl = await driver.getCurrentUrl();\nexpect(currentUrl).to.include(\"inventory.html\");\nawait driver.sleep(1500);\nawait captureAndCompare(\"login-success\");",
+              "err": {},
+              "uuid": "ff7b4205-e28d-4d30-beec-255d985a6a1c",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative - Invalid username",
+              "fullTitle": "SauceDemo - Login Negative - Invalid username",
+              "timedOut": false,
+              "duration": 1161,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login(\n    \"username_salah\",\n    \"secret_sauce\"\n);\nconst errorMessage = await loginPage.getErrorMessage();\nexpect(errorMessage).to.include(\n    \"Username and password do not match\"\n);\nawait driver.sleep(500);\nawait captureAndCompare(\"invalid-username\");",
+              "err": {},
+              "uuid": "6ff29e0b-0b0f-4cca-a878-b8b86f60a942",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative - Wrong password",
+              "fullTitle": "SauceDemo - Login Negative - Wrong password",
+              "timedOut": false,
+              "duration": 1146,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login(\n    \"standard_user\",\n    \"password_salah\"\n);\nconst errorMessage = await loginPage.getErrorMessage();\nexpect(errorMessage).to.include(\n    \"Username and password do not match\"\n);\nawait driver.sleep(500);\nawait captureAndCompare(\"wrong-password\");",
+              "err": {},
+              "uuid": "6e7089da-b51e-47c0-91f1-0af1f693a449",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative - Locked out user",
+              "fullTitle": "SauceDemo - Login Negative - Locked out user",
+              "timedOut": false,
+              "duration": 1128,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.login(\n    \"locked_out_user\",\n    \"secret_sauce\"\n);\nconst errorMessage = await loginPage.getErrorMessage();\nexpect(errorMessage).to.include(\n    \"Sorry, this user has been locked out.\"\n);\nawait driver.sleep(500);\nawait captureAndCompare(\"locked-out-user\");",
+              "err": {},
+              "uuid": "c5a13dd0-5b47-44b9-87b9-e0a84c7e8ff6",
+              "parentUUID": "458102e7-1304-4693-81b3-3f0ef3eb47e1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ff7b4205-e28d-4d30-beec-255d985a6a1c",
+            "6ff29e0b-0b0f-4cca-a878-b8b86f60a942",
+            "6e7089da-b51e-47c0-91f1-0af1f693a449",
+            "c5a13dd0-5b47-44b9-87b9-e0a84c7e8ff6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5938,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "12.0.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "login-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "login-report",
+        "html": "true",
+        "json": "true"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
